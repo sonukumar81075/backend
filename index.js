@@ -1,6 +1,8 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
 const githubData = {
   login: "sonu",
@@ -41,12 +43,12 @@ const githubData = {
 app.get("/", (req, res) => {
   res.send("Hello world!");
 });
-app.get("/githubuser", (req, res) => {
-  res.json(githubData);
-});
 
 app.get("/login", (req, res) => {
   res.send("login successfull!");
+});
+app.get("/api/v1/github", (req, res) => {
+  res.json(githubData);
 });
 
 const PORT = 4000;
